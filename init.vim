@@ -46,7 +46,6 @@ Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
@@ -236,7 +235,6 @@ nnoremap <Leader>pt :Tags<CR>
 
 " File wide mappings
 nnoremap <Leader>ft :BTags<CR>
-
 
 " Editor mappings
 nnoremap <Leader>ew :Windows<CR>
