@@ -243,10 +243,10 @@ nnoremap <Leader>eb :Buffers<CR>
 "" end of fzf
 
 " Dash app
-:nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>d <Plug>DashSearch
 
 " vim-notes
-:let g:notes_directories = ['~/Google Drive/vim-notes']
+let g:notes_directories = ['~/Google Drive/vim-notes']
 
 " IndentGuides
 let g:indent_guides_guide_size = 1
