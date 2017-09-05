@@ -72,6 +72,7 @@ set showcmd
 let mapleader="\<Space>"
 set cursorline
 set splitright
+set splitbelow
 
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -178,6 +179,15 @@ nnoremap <silent> <C-Down> :res -3<CR>
 nnoremap <silent> <C-Left> :vertical res -3<CR>
 nnoremap <silent> <C-Right> :vertical res +3<CR>
 nnoremap <silent> = :winc =<CR>
+
+"" Terminal stuff
+command! -nargs=* T split | terminal <args>
+command! -nargs=* VT vsplit | terminal <args>
+
+nnoremap <silent> <Leader>eth :T<CR>
+nnoremap <silent> <Leader>etv :VT<CR>
+
+tnoremap <ESC> <C-\><C-n>
 
 " Highlight curren tline only in the active pane
 augroup CursorLine
