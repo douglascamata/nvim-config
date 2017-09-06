@@ -159,26 +159,41 @@ endfunction
 nmap <silent> <Leader>rt :silent call RipperTags()<cr>
 autocmd BufWritePost *.rb call RipperTagsIfGemfile()
 
-" Move between buffers with arrow keys
-nnoremap <silent> <Right> <c-w>l
-nnoremap <silent> <Left> <c-w>h
-nnoremap <silent> <Up> <c-w>k
-nnoremap <silent> <Down> <c-w>j
+" Move between buffers with Control + {l|j|k|h|}
+nnoremap <silent> <C-l> <c-w>l
+nnoremap <silent> <C-h> <c-w>h
+nnoremap <silent> <C-k> <c-w>k
+nnoremap <silent> <C-j> <c-w>j
+nnoremap <silent> <leader>fd :bp\|bd#<cr>
 
 " Split buffers with Leader+{v|h}
 nnoremap <silent> <Leader>v :vsplit<cr>
 nnoremap <silent> <Leader>h :split<cr>
 
-" Buffer and project tags fuzzy search
+" Move between buffers
 nnoremap <silent> { :bp<cr>
 nnoremap <silent> } :bn<cr>
 
-" Resize splits with Control + arrow keys
-nnoremap <silent> <C-Up> :res +3<CR>
-nnoremap <silent> <C-Down> :res -3<CR>
-nnoremap <silent> <C-Left> :vertical res -3<CR>
-nnoremap <silent> <C-Right> :vertical res +3<CR>
+" Tab management
+nnoremap <silent> [ :tabprevious<CR>
+nnoremap <silent> [ :tabnext<CR>
+
+" Resize splits with arrow keys
+nnoremap <silent> <Up> :res +3<CR>
+nnoremap <silent> <Down> :res -3<CR>
+nnoremap <silent> <Left> :vertical res -3<CR>
+nnoremap <silent> <Right> :vertical res +3<CR>
 nnoremap <silent> = :winc =<CR>
+
+" Improved scrolling credits: https://github.com/Shougo
+nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
+	\ 'zt' : (winline() == 1) ? 'zb' : 'zz'
+noremap <expr> <C-f> max([winheight(0) - 2, 1])
+	\ ."\<C-d>".(line('w$') >= line('$') ? "L" : "M")
+noremap <expr> <C-b> max([winheight(0) - 2, 1])
+	\ ."\<C-u>".(line('w0') <= 1 ? "H" : "M")
+noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
+noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
 
 "" Terminal stuff
 command! -nargs=* T split | terminal <args>
@@ -186,8 +201,6 @@ command! -nargs=* VT vsplit | terminal <args>
 
 nnoremap <silent> <Leader>eth :T<CR>
 nnoremap <silent> <Leader>etv :VT<CR>
-
-tnoremap <ESC> <C-\><C-n>
 
 " Highlight curren tline only in the active pane
 augroup CursorLine
@@ -214,9 +227,6 @@ set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
 set wildignore+=*.swp,*~,._*
 " Misc
 set wildignore+=*.png,*.jpg,*.gif,*.jpeg,*/public/images/*,*/public/uploads/*,*/docker/bundle/*
-
-" no balloon
-" au BufNewFile,BufRead * set noballooneval
 
 " always a status bar
 set laststatus=2
@@ -284,7 +294,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "<Down>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "<Up>"
-"inoremap <expr> <ESC> pumvisible() ? deoplete#smart_close_popup() : "<ESC>"
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
