@@ -13,31 +13,21 @@ Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'rizzatti/dash.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 Plug 'morhetz/gruvbox'
 Plug 'dag/vim-fish'
 Plug 'ddollar/nerdcommenter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rails'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'jgdavey/vim-blockle', { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'kassio/neoterm'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
-Plug 'benmills/vimux'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
@@ -46,14 +36,22 @@ Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-vinegar', {'on': ['Explore']}
 Plug 'skwp/vim-rspec', { 'for': 'ruby' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
-Plug 'slim-template/vim-slim'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'ap/vim-css-color', { 'for': 'css' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'ruby' }
@@ -175,8 +173,10 @@ nnoremap <silent> { :bp<cr>
 nnoremap <silent> } :bn<cr>
 
 " Tab management
-nnoremap <silent> [ :tabprevious<CR>
-nnoremap <silent> [ :tabnext<CR>
+nnoremap <silent> th :tabfirst<CR>
+nnoremap <silent> tj :tabnext<CR>
+nnoremap <silent> tk :tabprev<CR>
+nnoremap <silent> tl :tablast<CR>
 
 " Resize splits with arrow keys
 nnoremap <silent> <Up> :res +3<CR>
@@ -196,8 +196,8 @@ noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
 noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
 
 "" Terminal stuff
-command! -nargs=* T split | terminal <args>
-command! -nargs=* VT vsplit | terminal <args>
+command! -nargs=* T :split | :terminal <args>
+command! -nargs=* VT :vsplit | :terminal <args>
 
 nnoremap <silent> <Leader>eth :T<CR>
 nnoremap <silent> <Leader>etv :VT<CR>
@@ -300,6 +300,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='gruvbox'
+
+" Vim Fugitive
+nnoremap <silent> <Leader>gs :Gstatus<CR>
 
 " ALE
 let g:ale_lint_on_text_changed = 'never'
