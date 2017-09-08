@@ -311,3 +311,6 @@ let g:ale_lint_on_enter = 0
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
+
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
