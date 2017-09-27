@@ -71,6 +71,9 @@ let mapleader="\<Space>"
 set cursorline
 set splitright
 set splitbelow
+set foldmethod=syntax
+set foldlevelstart=1
+set nofoldenable
 
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
