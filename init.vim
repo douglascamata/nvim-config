@@ -185,6 +185,14 @@ nnoremap <silent> <Left> :vertical res -3<CR>
 nnoremap <silent> <Right> :vertical res +3<CR>
 nnoremap <silent> = :winc =<CR>
 
+" Quickfix List stuff
+command! Cclean cexpr []
+
+nnoremap <silent> <Leader>cc :Cclean<cr>
+nnoremap <silent> <Leader>ct :cw<CR>
+nnoremap <silent> <Leader>ck :cnext<CR>
+nnoremap <silent> <Leader>cj :cprev<CR>
+
 " Improved scrolling credits: https://github.com/Shougo
 nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
 	\ 'zt' : (winline() == 1) ? 'zb' : 'zz'
@@ -260,6 +268,21 @@ nnoremap <Leader>ft :BTags<CR>
 nnoremap <Leader>ew :Windows<CR>
 nnoremap <Leader>es :Snippets<CR>
 nnoremap <Leader>eb :Buffers<CR>
+
+" CTRL-A CTRL-Q to select all and build quickfix list
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 "" end of fzf
 
 " Dash app
@@ -303,6 +326,7 @@ let g:airline_theme='gruvbox'
 
 " Vim Fugitive
 nnoremap <silent> <Leader>gs :Gstatus<CR>
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " ALE
 let g:ale_lint_on_text_changed = 'never'
