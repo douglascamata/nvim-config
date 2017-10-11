@@ -177,3 +177,12 @@ set laststatus=2
 ""
 set backupdir^=~/.vim/_backup//
 set directory^=~/.vim/_temp//
+
+" Quickfix List stuff
+command! Cclean cexpr []
+
+nnoremap <silent> <Leader>cc :Cclean<cr>
+nnoremap <silent> <Leader>ct :cw<CR>
+nnoremap <silent> <Leader>ck :cnext<CR>
+nnoremap <silent> <Leader>cj :cprev<CR>
+
