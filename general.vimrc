@@ -55,7 +55,7 @@ Plug 'ap/vim-css-color', { 'for': 'css' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'ruby' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 
 call plug#end()
