@@ -36,12 +36,6 @@ noremap <expr> <C-b> max([winheight(0) - 2, 1])
 noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
 noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
 
-"" Terminal stuff
-command! -nargs=* T :split | :terminal <args>
-command! -nargs=* VT :vsplit | :terminal <args>
-nnoremap <silent> <Leader>eth :T<CR>
-nnoremap <silent> <Leader>etv :VT<CR>
-
 " NerdTree
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -79,7 +73,7 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 "" end of fzf
 
 " Dash app
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <LocalLeader>d <Plug>DashSearch
 
 " Deoplete code completion on tab
 imap <silent><expr> <TAB>
@@ -98,8 +92,21 @@ inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "<Up>"
 " Vim Fugitive
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 
-" Manual rippertags
-nmap <silent> <Leader>rt :silent call RipperTags()<cr>
-
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
+
+" NeoTerm
+nnoremap <Leader>tr :T<Space>
+nnoremap <Leader>tt :Ttoggle<cr>
+nnoremap <Leader>to :Topen<cr>
+nnoremap <Leader>th :call neoterm#close()<cr>
+nnoremap <Leader>tc :call neoterm#clear()<cr>
+nnoremap <Leader>tk :call neoterm#kill()<cr>
+
+" init.vim helpers
+nnoremap <Leader>rr :so ~/.config/nvim/init.vim<cr>
+nnoremap <Leader>re :edit ~/.config/nvim/init.vim<cr>
+
+" Record macro with qq and use with Q
+nnoremap Q @q
+vnoremap Q :norm @q<cr>

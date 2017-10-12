@@ -1,17 +1,11 @@
+"" NeoTerm
+let g:neoterm_position = 'horizontal'
+let g:neoterm_automap_keys = ',tt'
+let g:neoterm_autoscroll = 1
+let g:neoterm_use_relative_path = 1
+
 "" Don't load elm-vim mappings by default
 let g:elm_setup_keybindings = 0
-
-"" Ruby tags with ripper-tags
-function! RipperTags()
-  call jobstart('ripper-tags -R --exclude vendor --exclude .bundle')
-endfunction
-
-function! RipperTagsIfGemfile()
-  if filereadable('Gemfile')
-    call RipperTags()
-  endif
-endfunction
-autocmd BufWritePost *.rb call RipperTagsIfGemfile()
 
 " vim-notes
 let g:notes_directories = ['~/Google Drive/vim-notes']

@@ -8,6 +8,7 @@ set termguicolors
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'w0rp/ale'
+Plug 'kassio/neoterm'
 Plug 'scrooloose/nerdtree'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
@@ -65,6 +66,7 @@ syntax enable
 set encoding=utf-8
 set showcmd
 let mapleader="\<Space>"
+let maplocalleader=","
 set cursorline
 set splitright
 set splitbelow
