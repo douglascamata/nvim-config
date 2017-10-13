@@ -3,6 +3,10 @@ let g:neoterm_position = 'horizontal'
 let g:neoterm_automap_keys = ',tt'
 let g:neoterm_autoscroll = 1
 let g:neoterm_use_relative_path = 1
+function! Neoterm_runmap(command)
+  call neoterm#do(a:command)
+  call neoterm#map_for(a:command)
+endfunction
 
 "" Don't load elm-vim mappings by default
 let g:elm_setup_keybindings = 0

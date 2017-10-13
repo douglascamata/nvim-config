@@ -95,8 +95,9 @@ nnoremap <silent> <Leader>gs :Gstatus<CR>
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
 
-" NeoTerm
-nnoremap <Leader>tr :T<Space>
+" NeoTermcommand! -complete=shellcmd -nargs=+
+command! -complete=shellcmd -nargs=+ Trunmap call Neoterm_runmap(<q-args>)
+nnoremap <Leader>tr :Trunmap<Space>
 nnoremap <Leader>tt :Ttoggle<cr>
 nnoremap <Leader>to :Topen<cr>
 nnoremap <Leader>th :call neoterm#close()<cr>

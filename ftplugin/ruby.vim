@@ -2,9 +2,10 @@ function! RSpecPosition()
   let line = line('.')
   let command = "bin/rspec %:" . line
   call neoterm#do(command)
+  call neoterm#map_for(command)
 endfunction
 
-command! TRspecFile :T bin/rspec %
+command! TRspecFile :Trunmap bin/rspec %
 nnoremap <LocalLeader>tf :TRspecFile<CR>
 nnoremap <LocalLeader>tp :call RSpecPosition()<CR>
 
